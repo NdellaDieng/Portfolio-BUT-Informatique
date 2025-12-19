@@ -1,12 +1,16 @@
 /* ========================================================= */
-/* VARIABLES ET RÉINITIALISATION DE BASE */
+/* 1. VARIABLES ET RÉINITIALISATION                          */
 /* ========================================================= */
 
 :root {
-    --primary-color: #007bff; /* Bleu Bootstrap pour l'accent */
-    --secondary-color: #6c757d; /* Gris secondaire */
-    --background-dark: #212529; /* Noir/Gris foncé pour footer/sections */
-    --background-light: #f8f9fa; /* Gris très clair pour sections */
+    /* Retour au Bleu Professionnel */
+    --primary-color: #007bff; 
+    --bs-primary: #007bff;
+    --bs-primary-rgb: 13, 110, 253; 
+    
+    --secondary-color: #6c757d; 
+    --background-dark: #212529; 
+    --background-light: #f8f9fa; 
     --text-dark: #343a40;
     --text-light: #ffffff;
     --heading-font: 'Barlow', sans-serif;
@@ -17,7 +21,6 @@
 body {
     font-family: var(--body-font);
     color: var(--text-dark);
-    /* L'espion de défilement de Bootstrap est activé dans le HTML */
 }
 
 a {
@@ -27,8 +30,7 @@ a {
 }
 
 a:hover {
-    color: var(--primary-color);
-    opacity: 0.8;
+    color: #0056b3;
 }
 
 /* Titres */
@@ -37,14 +39,14 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
 }
 
 /* ========================================================= */
-/* STYLE DES SECTIONS COMMUNES */
+/* 2. STYLE DES SECTIONS COMMUNES                            */
 /* ========================================================= */
 
 .sect-pt4 {
-    padding-top: 4rem; /* Votre classe de padding section */
+    padding-top: 4rem;
 }
 
-/* Ligne de séparation des titres */
+/* Ligne de séparation des titres (Bleu) */
 .line-mf {
     width: 40px;
     height: 5px;
@@ -52,9 +54,9 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     margin: 0 auto;
 }
 
-/* Boutons personnalisés (utilisés dans le HTML pour CV/Contact) */
+/* Boutons avec dégradé bleu */
 .btn-grad {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, #007bff, #00c6ff);
     color: var(--text-light);
     border: none;
     padding: 10px 25px;
@@ -64,13 +66,13 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
 }
 
 .btn-grad:hover {
-    background-color: darken(var(--primary-color), 10%);
+    filter: brightness(1.1);
     color: var(--text-light);
     transform: translateY(-2px);
 }
 
 /* ========================================================= */
-/* 1. NAVIGATION (HEADER) */
+/* 3. NAVIGATION (HEADER)                                    */
 /* ========================================================= */
 
 #header {
@@ -84,156 +86,105 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     color: var(--primary-color);
 }
 
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.navbar .nav-link {
-    display: block;
-    padding: 10px 15px;
-    font-weight: 400;
-    color: var(--text-dark);
-    transition: var(--transition);
-}
-
 .navbar .nav-link:hover,
-.navbar .nav-link.active,
-.navbar .nav-link.scrollto.active {
+.navbar .nav-link.active {
     color: var(--primary-color);
 }
-
-/* Menu Mobile (Burger) */
-.mobile-nav-toggle {
-    color: var(--text-dark);
-    font-size: 24px;
-    cursor: pointer;
-    display: none; /* Affiché uniquement sur mobile par le JavaScript */
-    line-height: 0;
-    transition: var(--transition);
+/* Forcer l'alignement horizontal du menu */
+.navbar ul {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
-@media (max-width: 991px) {
-    .mobile-nav-toggle {
-        display: block;
-    }
-    .navbar {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Caché */
-        width: 300px;
-        max-width: 80%;
-        height: 100vh;
-        z-index: 9997;
-        background-color: rgba(255, 255, 255, 0.95);
-        transition: var(--transition);
-        padding-top: 60px;
-    }
-    .navbar-mobile {
-        right: 0; /* Montré */
-    }
-    .navbar ul {
-        display: block;
-    }
-    .navbar .nav-link {
-        padding: 10px 20px;
-    }
+.navbar li {
+    padding: 0 15px; /* Espace entre les mots */
 }
 
+.navbar a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Supprimer les puces si elles apparaissent encore */
+.navbar ul li::before {
+    display: none !important;
+}
 
 /* ========================================================= */
-/* 2. SECTION HERO (Accueil) */
+/* FIX VIDEO ET TEXTE HERO                                   */
 /* ========================================================= */
 
 #hero {
     position: relative;
     height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    color: var(--text-light);
+    background-color: black; /* Fond de sécurité pendant le chargement */
 }
 
-#hero .video-wrapper {
+.video-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    z-index: 1; /* Couche la plus basse */
 }
 
-#hero video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La vidéo remplit tout l'écran sans se déformer */
 }
 
+/* Le voile sombre pour aider à lire le texte */
 .overlay-itro {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0;
-    height: 100%;
     width: 100%;
-    /* Assombrir la vidéo pour lire le texte */
-    background-color: rgba(0, 0, 0, 0.6); 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 40% de noir */
+    z-index: 2; /* Entre la vidéo et le texte */
 }
 
+/* Le texte (Ndella Dieng) */
 .hero-content {
     position: relative;
-    z-index: 10;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 3; /* Couche la plus haute */
+    color: #ffffff;
+    text-align: center;
 }
 
 .hero-title {
-    font-weight: 600;
-    font-size: 4rem;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ombre pour plus de lisibilité */
 }
 
 .hero-subtitle {
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
+    font-size: 1.5rem;
+    color: #fff;
 }
-
-@media (min-width: 768px) {
-    .hero-title {
-        font-size: 5.5rem;
-    }
-    .hero-subtitle {
-        font-size: 2.5rem;
-    }
-}
-
 
 /* ========================================================= */
-/* 3. SECTION PROFIL (À PROPOS) */
+/* 4. SECTION PROFIL ET TIMELINE                             */
 /* ========================================================= */
 
 .box-shadow-full {
     padding: 3rem;
     background-color: var(--text-light);
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     margin-bottom: 3rem;
-}
-
-.about-img img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .title-box-2 {
@@ -242,7 +193,6 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     border-bottom: 2px solid var(--primary-color);
 }
 
-/* Style de la Timeline */
 .timeline {
     list-style: none;
     padding-left: 10px;
@@ -252,11 +202,6 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     position: relative;
     padding: 0 0 15px 15px;
     border-left: 2px solid var(--secondary-color);
-}
-
-.timeline li:last-child {
-    border-left: none;
-    padding-bottom: 0;
 }
 
 .timeline li::before {
@@ -276,47 +221,27 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     font-weight: 600;
 }
 
-.timeline p {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-}
-
 /* ========================================================= */
-/* 4. SECTION COMPÉTENCES */
+/* 5. COMPÉTENCES (SERVICES)                                 */
 /* ========================================================= */
-
-.services-mf {
-    background-color: var(--background-light);
-}
 
 .service-box {
     background-color: var(--text-light);
     padding: 2.5rem 1.3rem;
     border-radius: 5px;
-    margin-bottom: 3rem;
     box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
-}
-
-.service-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.2);
-}
-
-.service-ico {
-    margin-bottom: 1rem;
 }
 
 .ico-circle {
     height: 100px;
     width: 100px;
-    line-height: 1.6;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
     border-radius: 50%;
     color: var(--text-dark);
-    background-color: var(--text-light);
     box-shadow: 0 0 0 10px var(--primary-color);
     font-size: 3rem;
     transition: var(--transition);
@@ -327,53 +252,32 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     color: var(--text-light);
 }
 
-.s-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-}
-
 /* ========================================================= */
-/* 5. SECTION PROJETS (PORTFOLIO) */
+/* 6. SECTION PROJETS (PORTFOLIO)                            */
 /* ========================================================= */
 
 .work-box {
-    overflow: hidden;
-    margin-bottom: 3rem;
     background-color: var(--text-light);
     box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.work-img {
+    border-radius: 8px;
     overflow: hidden;
 }
 
 .work-img img {
-    transition: all 1s;
-    height: 250px; /* Taille fixe pour les aperçus */
+    transition: all 0.5s;
+    height: 250px;
     width: 100%;
     object-fit: cover;
 }
 
 .work-box:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-.work-content {
-    padding: 1.5rem;
-}
-
-.w-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.w-more {
-    font-size: 0.8rem;
-    color: var(--secondary-color);
-    margin-top: 5px;
+.plus-btn {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    transition: 0.3s;
 }
 
 .w-ctegory {
@@ -381,110 +285,56 @@ h1, h2, h3, h4, h5, h6, .title-a, .s-title {
     font-weight: 600;
 }
 
-/* Style spécifique Glightbox (pour que les images soient bien groupées) */
-.glightbox {
-    display: block;
-    text-decoration: none;
-}
-/* Style spécifique pour le bouton "+" comme sur l'image */
-      .plus-btn {
-          font-size: 2.2rem;
-          color: #00bcd4; /* Cyan comme sur votre exemple */
-          line-height: 0;
-          transition: 0.3s;
-          text-decoration: none;
-      }
-      .plus-btn:hover {
-          color: #007bff;
-          transform: scale(1.1);
-      }
-      .work-content {
-          padding: 1.5rem;
-          background: #fff;
-      }
-      .w-title {
-          font-size: 1.2rem;
-          margin-bottom: 0.2rem;
-      }
-      .w-more {
-          font-size: 0.9rem;
-          color: #00bcd4;
-      }
-
 /* ========================================================= */
-/* 6. SECTION CONTACT ET FOOTER */
+/* 7. PAGES DÉTAILS                                          */
 /* ========================================================= */
 
-#contact {
-    background-color: var(--background-light);
+.project-hero { 
+    padding: 120px 0 60px; 
+    background: var(--background-light); 
+    border-bottom: 1px solid #eee;
 }
 
-.paralax-mf {
-    position: relative;
-    /* Ajoutez une image de fond si vous le souhaitez, sinon utilisez la couleur */
-    /* background-image: url('../img/overlay-bg.jpg'); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    padding: 8rem 0; 
+.tech-tag { 
+    background: var(--primary-color); 
+    color: #fff; 
+    padding: 5px 15px; 
+    border-radius: 20px; 
+    font-size: 0.85rem; 
+    margin: 3px; 
+    display: inline-block; 
 }
 
-.contact-mf {
-    margin-top: 4rem;
+.img-detail-shadow {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-.more-info ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.more-info li {
-    font-size: 1.1rem;
-    padding: 10px 0;
-}
-
-.more-info .bi {
-    color: var(--primary-color);
-    margin-right: 10px;
-}
+/* ========================================================= */
+/* 8. FOOTER ET RETOUR HAUT                                  */
+/* ========================================================= */
 
 footer {
     background-color: var(--background-dark);
     color: var(--text-light);
-    font-size: 0.9rem;
+    padding: 30px 0;
 }
 
 footer strong {
     color: var(--primary-color);
 }
 
-/* ========================================================= */
-/* BACK TO TOP BUTTON */
-/* ========================================================= */
-
 .back-to-top {
     position: fixed;
-    visibility: hidden;
-    opacity: 0;
     right: 15px;
     bottom: 15px;
-    z-index: 996;
     background: var(--primary-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    transition: all 0.4s;
-}
-
-.back-to-top i {
-    font-size: 24px;
-    color: var(--text-light);
-    line-height: 0;
-}
-
-.back-to-top.active {
-    visibility: visible;
-    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.4s;
 }
