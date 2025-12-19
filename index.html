@@ -24,6 +24,15 @@
     
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&display=swap'); 
+      /* Ajustement pour que le formulaire Brevo s'intègre au design */
+        #sib-container {
+            background-color: transparent !important;
+            border: none !important;
+            max-width: 100% !important;
+        }
+        .sib-form-block { padding: 10px 0 !important; }
+        .entry__label { text-align: left !important; display: block; margin-bottom: 5px; }
+        .input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 5px; }
 
     </style>
 </head>
@@ -525,192 +534,44 @@ utilisateur ergonomiques et attractives.</p>
 
     <hr>
 
-            <section id="contact" class="paralax-mf footer-paralax sect-mt4 route">
-
-        <div class="container">
-
+           <section id="contact" class="paralax-mf footer-paralax sect-mt4 route">
+    <div class="container">
         <div class="row justify-content-center">
+            <div class="col-sm-12">
+                <div class="contact-mf">
+                    <div class="box-shadow-full">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="title-box-2">
+                                    <h5 class="title-left">Contactez-moi</h5>
+                                </div>
+                                <iframe width="100%" height="600" src="https://44726c11.sibforms.com/serve/MUIFAMwCtqj8kwLylMC7bF03_nHFUVkEjp1O9zxWObbapIHgXXpDtuf8RUkavN5-uuUiiqhbIMYHKdp2ksCqViWqWJfnjsk_qSvu3hLkb1mZxkeMNv9To2rT3fi668q_WPEhoYp1dYWyTLs3KYvBBtiBCYMSroZ0QlNHiuRjSG1ZAWAcbmY62IZV2vGszfGUTDPCM66UBkpglyR7RA==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+                            </div>
 
-        <div class="col-sm-12">
-
-        <div class="contact-mf">
-
-        <div class="box-shadow-full">
-
-        <div class="row">
-
-        <div class="col-md-6">
-
-        <div class="title-box-2">
-
-        <h5 class="title-left">Contactez-moi</h5>
-
+                            <div class="col-md-5">
+                                <div class="title-box-2 pt-4 pt-md-0">
+                                    <h5 class="title-left">Coordonnées</h5>
+                                </div>
+                                <div class="more-info">
+                                    <ul class="list-ico pt-2">
+                                        <li><span class="bi bi-geo-alt"></span> Montpellier et périphérie</li>
+                                        <li><span class="bi bi-telephone"></span> +33 7 45 11 95 52</li>
+                                    </ul>
+                                </div>
+                                <div class="title-box-2 pt-4 pt-md-2">
+                                    <h5 class="title-left">Réseaux Sociaux</h5>
+                                </div>
+                                <div class="more-info">
+                                    <a href="https://www.linkedin.com/in/ndella-pène-dieng-495565310" class="btn btn-grad" target="_blank" rel="nofollow noopener noreferrer">
+                                        LinkedIn <i class="bi bi-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> </div> </div>
+            </div>
         </div>
-
-
-
-                <form id="contact-form"
-
-                method="POST"
-
-                action="https://1d6c6a31.sibforms.com/serve/MUIFAFkqWBvfPaZJ69mv2eMeLOt786r_wJxvM7J6-JdKUQHp9wlQ5m3v-mmg9j__o_ViaFbqlsbpAmSX4jZVSYACfoVmGetHAOj0l6QPIa7jVuqZEGPzY0ZGqK6DoSS4bEUUhDziO_qKDgfvEgyeiiqV5yKFc6O6k_qce0ehTcCsLOF4l9WvB5ZU5z3Koly8euecEq0f6pC8tuUM"
-
-                novalidate>
-
-                <div class="form-group mb-3">
-
-                <label for="email" class="form-label fw-bold">Email :</label>
-
-
-                <input type="email"
-
-                class="form-control" id="email" name="EMAIL" placeholder="Votre adresse
-
-                email" required>
-
-                </div>
-
-                <div class="form-group mb-3">
-
-                <label for="phone" class="form-label fw-bold">Téléphone :</label>
-
-
-                <input type="tel"
-
-                class="form-control" id="phone" name="SMS" placeholder="Votre numéro de
-
-                téléphone">
-
-                </div>
-
-                <div class="form-group mb-3">
-
-                <label for="name" class="form-label fw-bold">Nom :</label>
-
-
-                <input type="text"
-
-                class="form-control" id="name" name="NOM" placeholder="Votre nom"
-
-                required>
-
-                </div>
-
-                <div class="form-group mb-3">
-
-                <label for="firstname" class="form-label fw-bold">Prénom :</label>
-
-
-                <input type="text"
-
-                class="form-control" id="firstname" name="PRENOM" placeholder="Votre
-
-                prénom" required>
-
-                </div>
-
-                <div class="form-group mb-3">
-
-                <label for="message" class="form-label fw-bold">Message :</label>
-
-
-                <textarea
-
-                class="form-control" id="message" name="MESSAGE" rows="4"
-
-                placeholder="Votre message"></textarea>
-
-                </div>
-
-                <div class="form-check mb-3">
-
-
-                <input type="checkbox"
-
-                class="form-check-input" id="opt-in" name="OPT_IN" value="1">
-
-
-                <label
-
-                class="form-check-label" for="opt-in">J'accepte de recevoir vos
-
-                e-mails et confirme avoir pris connaissance de votre politique de
-
-                confidentialité et mentions légales.</label>
-
-                </div>
-
-                <button type="submit" class="btn btn-grad fw-bold">Envoyer</button>
-
-                </form>
-
-
-                </div>
-
-                <div class="col-md-6">
-
-                <div class="title-box-2 pt-4 pt-md-0">
-
-                <h5 class="title-left">Coordonnées</h5>
-
-                </div>
-
-                <div class="more-info">
-
-                <ul class="list-ico pt-2">
-
-
-                <li><span
-
-                class="bi bi-geo-alt"></span>Montpellier et
-
-                périphérie</li>
-
-
-                <li><span
-
-                class="bi bi-telephone"></span>+33 7 45 11 95 52</li>
-
-                </ul>
-
-                </div>
-
-                <div class="title-box-2 pt-4 pt-md-2">
-
-                <h5 class="title-left">Réseaux Sociaux</h5>
-
-                </div>
-
-                <div class="more-info">
-
-
-                <a
-
-                href="https://www.linkedin.com/in/ndella-pène-dieng-495565310" class="btn btn-grad"
-
-                target="_blank" rel="nofollow noopener noreferrer">LinkedIn <i
-
-                class="bi bi-linkedin"></i></a>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </section>
-
-
+    </div>
+</section>
 
     </main>
 
