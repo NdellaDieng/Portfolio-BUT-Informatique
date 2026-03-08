@@ -1,0 +1,33 @@
+.competence-card {
+    border-left: 5px solid #007bff;
+    margin-bottom: 2rem;
+}
+
+.focus-card {
+    border: 3px solid #dc3545;
+    box-shadow: 0 0 20px rgba(220,53,69,0.2);
+}
+
+.ac-tag {
+    background: #e7f3ff;
+    color: #007bff;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin: 2px;
+    display: inline-block;
+}
+
+.focus-badge {
+    background: #ffebee;
+    color: #c62828;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.project-img {
+    max-height: 250px;
+    object-fit: cover;
+}
